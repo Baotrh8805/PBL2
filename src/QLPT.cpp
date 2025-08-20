@@ -15,7 +15,7 @@ QLPT::QLPT(){
 }
 
 tk *QLPT::doc_file_account() {
-    ifstream file("account.txt");
+    ifstream file("data/account.txt");
     if (file.is_open()) {
         string account;
         tk *head = NULL;
@@ -37,7 +37,7 @@ tk *QLPT::doc_file_account() {
         file.close();
         return head;
     } else {
-        cerr << "Khong the mo file account.txt" << endl;
+        cerr << "Khong the mo file data/account.txt" << endl;
         exit(EXIT_FAILURE);
     }
 }
@@ -272,7 +272,7 @@ void QLPT::data_thue(nguoi_thue& data, chu_tro& chu) {
 }
 
 void QLPT::doc_file_chu() {
-    ifstream file("chu_tro.txt");
+    ifstream file("data/chu_tro.txt");
     if (file.is_open()) {
         string chu;
         while (getline(file, chu)) {
@@ -302,7 +302,7 @@ void QLPT::doc_file_chu() {
 
 void QLPT::doc_file_thue() {
     int check = 0;
-    ifstream file("nguoi_thue.txt");
+    ifstream file("data/nguoi_thue.txt");
     if (file.is_open()) {
         string thue;
         while (getline(file, thue)) {
@@ -343,7 +343,7 @@ void QLPT::doc_file_thue() {
 
 void QLPT::doc_file_phong() {
     int check = 0;
-    ifstream file("phong_tro.txt");
+    ifstream file("data/phong_tro.txt");
     if (file.is_open()) {
         string phong;
         while (getline(file, phong)) {
@@ -385,7 +385,7 @@ void QLPT::doc_file_phong() {
 }
 
 void QLPT::doc_file_hd() {
-    ifstream file("hop_dong.txt");
+    ifstream file("data/hop_dong.txt");
     if (file.is_open()) {
         string hd;
         while (getline(file, hd)) {
@@ -424,7 +424,7 @@ void QLPT::doc_file_hd() {
 }
 
 void QLPT::doc_file_bill() {
-    ifstream file("hoa_don.txt");
+    ifstream file("data/hoa_don.txt");
     if (file.is_open()) {
         string bill;
         while (getline(file, bill)) {
@@ -480,7 +480,7 @@ void QLPT::tim_tk_thue(string ID) {
 }
 
 void QLPT::ghi_file_chu() {
-    ofstream file("chu_tro.txt");
+    ofstream file("data/chu_tro.txt");
     if (file.is_open()) {
         for (int i = 0; i < count_chu; i++) {
             file << (ct + i)->get_ID() << "|" << (ct + i)->get_ten() << "|" << (ct + i)->get_SDT() << "|" << (ct + i)->get_CCCD() << "|" << (ct + i)->get_dia_chi() << "|" << (ct + i)->get_gioi_tinh() << endl;
@@ -493,7 +493,7 @@ void QLPT::ghi_file_chu() {
 }
 
 void QLPT::ghi_file_thue() {
-    ofstream file("nguoi_thue.txt");
+    ofstream file("data/nguoi_thue.txt");
     if (file.is_open()) {
         for (int i = 0; i < count_thue; i++) {
             file << (nt + i)->get_ID()<< "|" << (nt + i)->get_ID_phong() << "|" << (nt + i)->get_ten() << "|" << (nt + i)->get_dia_chi() << "|" << (nt + i)->get_SDT() << "|" << (nt + i)->get_CCCD() << "|" << (nt + i)->get_gioi_tinh() << "|" << (nt + i)->get_trang_thai()  << endl;
@@ -506,7 +506,7 @@ void QLPT::ghi_file_thue() {
 }
 
 void QLPT::ghi_file_phong() {
-    ofstream file("phong_tro.txt");
+    ofstream file("data/phong_tro.txt");
     if (file.is_open()) {
         for (int i = 0; i < count_phong; i++) {
             file << (pt + i)->get_ID_phong() << "|" << (pt + i)->get_ID_chu() << "|" << (pt + i)->get_ID_thue() << "|" << (pt + i)->get_ten_phong() << "|" << (pt + i)->get_gia_phong() << "|" <<  (pt + i)->get_dien_tich() << "|" << (pt + i)->get_mo_ta_phong() << "|" << (pt + i)->get_trang_thai() << endl;
@@ -519,7 +519,7 @@ void QLPT::ghi_file_phong() {
 }
 
 void QLPT::ghi_file_hd() {
-    ofstream file("hop_dong.txt");
+    ofstream file("data/hop_dong.txt");
     if (file.is_open()) {
         for (int i = 0; i < count_hd; i++) {
             file << (hd + i)->get_ID_hop_dong() << "|" << (hd + i)->get_ID_phong()  << "|" << (hd + i)->get_ID_thue() << "|"<< (hd+i)->get_tien_phong() << "|" << (hd + i)->get_ngay_thue().ngay << "/" << (hd + i)->get_ngay_thue().thang << "/" << (hd + i)->get_ngay_thue().nam << "|" << (hd + i)->get_ngay_het_han().ngay << "/" << (hd + i)->get_ngay_het_han().thang << "/" << (hd + i)->get_ngay_het_han().nam << "|" << (hd + i)->get_ngay_het_han_real().ngay << "/" << (hd + i)->get_ngay_het_han_real().thang << "/" << (hd + i)->get_ngay_het_han_real().nam << "|" << (hd + i)->get_trang_thai() << endl;
@@ -532,7 +532,7 @@ void QLPT::ghi_file_hd() {
 }
 
 void QLPT::ghi_file_bill() {
-    ofstream file("hoa_don.txt");
+    ofstream file("data/hoa_don.txt");
     if (file.is_open()) {
         for (int i = 0; i < count_bill; i++) {
             file << (bill + i)->get_ID_hoa_don() << "|" << (bill + i)->get_ID_phong() << "|" << (bill + i)->get_tien_dien() << "|" << (bill + i)->get_tien_nuoc() << "|" << (bill + i)->get_thoi_gian().thang << "/" << (bill + i)->get_thoi_gian().nam << "|" << (bill + i)->get_han_nop().ngay << "/" << (bill + i)->get_han_nop().thang << "/" << (bill + i)->get_han_nop().nam << "|" << (bill + i)->get_trang_thai() << endl;
